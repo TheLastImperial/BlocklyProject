@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title>Blockly Demo: Generating JavaScript</title>
-  <script src="js/blockly_compressed.js"></script>
-  <script src="js/blocks_compressed.js"></script>
-  <script src="js/python_compressed.js"></script>
-  <script src="js/es.js"></script>
+  <script src="node_modules/blockly/blockly.js"></script>
+  <script src="node_modules/blockly/blocks.js"></script>
+  <script src="node_modules/blockly/python.js"></script>
+  <script src="node_modules/blockly/msg/es.js"></script>
+
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <script src="node_modules/moment/moment.js"></script>
   <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -28,11 +29,13 @@
   </p>
   <div class="row">
     <div class="col-md-8">
-      <div id="blocklyDiv" style="height: 800px; width: 1000px;"></div>
+      <div id="blocklyDiv" style="height: 550px; width: 880px;"></div>
     </div>
     <div class="col-md-4">
       <div class="col-md-12">
         <span id="btnTimer" class="border border-primary col-md-12">00:00:00</span>
+      </div>
+      <div id="divCode" class="col-md-12 border border-primary">
       </div>
     </div>
   </div>
@@ -117,7 +120,9 @@
       </statement>
     </block>
   </xml>
-  <script type="text/javascript" src="js/init.js"></script>
+
   <script type="text/javascript" src="js/timer.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
 </body>
 </html>
