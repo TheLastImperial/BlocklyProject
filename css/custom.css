@@ -1,3 +1,10 @@
 #divCode {
   height: 200px;
+  white-space: pre-wrap;
+  overflow-y: scroll;
+}
+
+#divEjercicio{
+  height: 200px;
+  overflow-y: scroll;
 }

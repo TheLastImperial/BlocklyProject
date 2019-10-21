@@ -1,7 +1,22 @@
 var m = moment().startOf('day');
+var timerId = null;
 
-setInterval(function(){
-  var ele = $("#btnTimer");
-  m = m.add(1, "s");
-  ele.text(m.format("HH:mm:ss"));
-}, 1000);
+var Timer = {
+  timerFn: function() {
+    var ele = $("#btnTimer");
+    m = m.add(1, "s");
+    ele.text(m.format("HH:mm:ss"));
+  },
+
+  start: function(){
+    if(!timerId){
+      m = moment().startOf('day');
+      timerId = setInterval(this.timerFn, 1000);
+    }
+  },
+
+  stop: function (){
+    if(timerId)
+      clearInterval(timerId);
+  }
+}
