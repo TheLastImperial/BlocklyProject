@@ -6,14 +6,21 @@ var IBlockly = {
     return Blockly.Python.workspaceToCode(this.workspace);
   },
   chargeBlockly: function(exercise){
+    $("#blocklyDiv").empty();
+    var eleTool = document.getElementById(exercise.toolboxId);
+
     this.workspace = Blockly.inject('blocklyDiv', {
       media: 'node_modules/blockly/media/',
-      toolbox: document.getElementById(exercise.toolboxId)
+      toolbox: eleTool
     });
 
-    Blockly.Xml.domToWorkspace(
-      document.getElementById(exercise.startBlocksId),
-      this.workspace
-    );
+    var ele = document.getElementById(exercise.startBlocksId);
+    if(ele != null){
+      Blockly.Xml.domToWorkspace(
+        ele,
+        this.workspace
+      );
+    $("#blocklyDiv").trigger("resize")
+    }
   }
 }

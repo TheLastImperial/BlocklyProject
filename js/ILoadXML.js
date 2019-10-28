@@ -10,11 +10,14 @@ var ILoadXML = {
 
     $('#divXmls').empty();
 
-    tmpDiv.load(exercise.startBlocksFile, function() {
-      $('#divXmls').append(tmpDiv.children())
+    if(exercise.startBlocksFile != null){
+      tmpDiv.load(exercise.startBlocksFile, function() {
+        $('#divXmls').append(tmpDiv.children())
+        d0.resolve();
+      });
+    }else{
       d0.resolve();
-    });
-
+    }
     tmpDiv.load(exercise.toolboxFile, function() {
       $('#divXmls').append(tmpDiv.children())
       d1.resolve();

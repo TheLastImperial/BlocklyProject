@@ -9,6 +9,11 @@
   overflow-y: scroll;
 }
 
+#divReply{
+  display: none;
+  white-space: pre-wrap;
+}
+
 body{
   padding-right: 1%;
   padding-left: 1%;

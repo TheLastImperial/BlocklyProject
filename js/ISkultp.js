@@ -2,7 +2,7 @@ function pythonToJs(code){
   return Sk.importMainWithBody("<stdin>",false,code)
 }
 function outf(text) {
-  var mypre = document.getElementById("divCode");
+  var mypre = document.getElementById("divReply");
   mypre.innerHTML = mypre.innerHTML + text;
 }
 

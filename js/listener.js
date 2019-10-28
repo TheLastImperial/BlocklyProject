@@ -28,11 +28,17 @@ var onresize = function(e) {
   el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
 };
 
+var btnPlayFn = function(){
+  Timer.start();
+}
+
+var btnEvaluarFn = function(){
+  eval(pythonToJs(code));
+  var resp = $("#divReply").html();
+}
 
 var setListeners = function(){
-  $("#btnPlay").on("click", function(){
-    Timer.start();
-  });
+  $("#btnPlay").on("click", btnPlayFn);
 
   $("#btnCompile").on("click", function(){
     var code = IBlockly.blocksToPython();
