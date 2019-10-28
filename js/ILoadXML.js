@@ -3,16 +3,19 @@ var ILoadXML = {
     'xmls/defaultBlocks.xml',
     'xmls/toolbox.xml'
   ],
-  loadXMLs: function(exec){
+  loadXMLs: function(exec, exercise){
     var d0 = $.Deferred();
     var d1 = $.Deferred();
     var tmpDiv = $("<div></div>");
-    tmpDiv.load(this.files[0], function() {
+
+    $('#divXmls').empty();
+
+    tmpDiv.load(exercise.startBlocksFile, function() {
       $('#divXmls').append(tmpDiv.children())
       d0.resolve();
     });
 
-    tmpDiv.load(this.files[1], function() {
+    tmpDiv.load(exercise.toolboxFile, function() {
       $('#divXmls').append(tmpDiv.children())
       d1.resolve();
     });
