@@ -13,10 +13,12 @@ var demoWorkspace = Blockly.inject('blocklyDiv', {
   toolbox: document.getElementById('toolbox')
 });
 
-Blockly.Xml.domToWorkspace(
-  document.getElementById('startBlocks'),
-  demoWorkspace
-);
+$('#divXmls').load('xmls/defaultBlocks.xml', function(){
+  Blockly.Xml.domToWorkspace(
+    document.getElementById('startBlocks'),
+    demoWorkspace
+  );
+});
 
 Blockly.Python.INFINITE_LOOP_TRAP = null;
 
