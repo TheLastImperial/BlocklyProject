@@ -8,12 +8,6 @@
 **  - pythonToJs
 */
 
-Blockly.Python.INFINITE_LOOP_TRAP = null;
-
-function blocksToPython(){
-  return Blockly.Python.workspaceToCode(demoWorkspace);
-}
-
 function builtinRead(x) {
     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
         throw "File not found: '" + x + "'";
@@ -75,15 +69,5 @@ var onresize = function(e) {
 };
 window.addEventListener('resize', onresize, false);
 window.addEventListener('load', function(){
-  var demoWorkspace = Blockly.inject('blocklyDiv', {
-    media: 'node_modules/blockly/media/',
-    toolbox: document.getElementById('toolbox')
-  });
-  $('#divXmls').load('xmls/defaultBlocks.xml', function(){
-    Blockly.Xml.domToWorkspace(
-      document.getElementById('startBlocks'),
-      demoWorkspace
-    );
-  });
-
+  ILoadXML.loadXMLs(IBlockly.chargeBlockly)
 });
