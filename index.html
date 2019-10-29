@@ -7,7 +7,6 @@
   <script src="node_modules/blockly/blocks.js"></script>
   <script src="node_modules/blockly/python.js"></script>
   <script src="node_modules/blockly/msg/es.js"></script>
-
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <script src="node_modules/moment/moment.js"></script>
   <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -15,29 +14,51 @@
   <script src="node_modules/skulpt/dist/skulpt-stdlib.js"></script>
 </head>
 <body>
-  <div class="row">
+  <div id="divHeader" class="row col-12">
+    <div class="col-8">
+      <h1 class="text-center">Aprende Python con Google Blockly</h1>
+      <div class="form-inline">
+        <div class="col-10">
+          Bienvenido al sistema de aprendizaje para Python usando Google Blockly
+          Pulsa comenzar.
+        </div>
+        <button id="btnStartGame" type="button" class="btn btn-outline-success">
+          Comenzar
+        </button>
+      </div>
+    </div>
+    <div class="col-4">
+      <table class="table">
+        <tr>
+          <td>Tiempo</td>
+          <td>
+            <span id="btnTimer">
+              00:00:00
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>Puntuación</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Intentos</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="divContent" class="row">
     <div id="divConBlockly" class="col-md-8">
       <div id="blocklyDiv" style="height: 100%; width: 100%;"></div>
     </div>
     <div class="col-md-4">
-      <div id="divBtnsTut" class="col-md-12" >
-        <button id="btnNext" type="button" class="btn btn-primary">
-          Siguiente
+      <div class="form-line">
+        <button id="btnCompile" class="btn btn-outline-primary">
+          Convertir a Python
         </button>
-        <span id="btnTimer" class="border border-primary">00:00:00</span>
-        <span>Intentos: <span>0</span></span>
-      </div>
-      <div id="divEjercicio" class="col-md-12 border border-primary">
-      </div>
-      <div class="col-md-12">
-        <button id="btnCompile" class="btn btn-primary">
-          Compilar
-        </button>
-        <button id="btnEvaluar" class="btn btn-primary">
+        <button id="btnEvaluar" class="btn btn-outline-primary">
           Evaluar
-        </button>
-        <button id="btnPlay" class="btn btn-primary">
-          Play
         </button>
       </div>
       <div id="divCode" class="col-md-12 border border-primary" >

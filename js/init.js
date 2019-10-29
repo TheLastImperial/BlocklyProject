@@ -4,5 +4,8 @@ window.addEventListener('load', function(){
     IBlockly.chargeBlockly(Exercises[0]);
     setListeners();
   }
+  var height = $(window).height() - $("#divHeader").height();
+  $('#divContent').height(height);
+
   ILoadXML.loadXMLs(a, Exercises[0])
 });

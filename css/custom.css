@@ -1,5 +1,5 @@
 #divCode {
-  height: 200px;
+  height: 90%;
   white-space: pre-wrap;
   overflow-y: scroll;
 }
@@ -12,6 +12,9 @@
 #divReply{
   display: none;
   white-space: pre-wrap;
+}
+#divXmls{
+  display: none;
 }
 
 body{

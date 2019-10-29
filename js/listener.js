@@ -37,16 +37,18 @@ var btnEvaluarFn = function(){
   var resp = $("#divReply").html();
 }
 
+var btnCompileFn = function(){
+  var code = IBlockly.blocksToPython();
+  $("#divCode").html(code);
+}
+
+var btnEvaluarFn = function(){
+  var code = IBlockly.blocksToPython();
+  eval(pythonToJs(code));
+}
+
 var setListeners = function(){
   $("#btnPlay").on("click", btnPlayFn);
-
-  $("#btnCompile").on("click", function(){
-    var code = IBlockly.blocksToPython();
-    $("#divCode").html(code);
-  });
-
-  $("#btnEvaluar").on("click", function(){
-    var code = IBlockly.blocksToPython();
-    eval(pythonToJs(code));
-  })
+  $("#btnCompile").on("click", btnCompileFn);
+  $("#btnEvaluar").on("click", btnEvaluarFn);
 }
