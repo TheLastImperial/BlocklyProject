@@ -1,5 +1,5 @@
 #divCode {
-  height: 90%;
+  height: 45%;
   white-space: pre-wrap;
   overflow-y: scroll;
 }
@@ -10,10 +10,15 @@
 }
 
 #divReply{
-  display: none;
+  height: 45%;
   white-space: pre-wrap;
 }
+
 #divXmls{
+  display: none;
+}
+
+#divBtns{
   display: none;
 }
 

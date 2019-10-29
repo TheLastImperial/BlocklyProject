@@ -3,9 +3,10 @@ window.addEventListener('load', function(){
   function a(){
     IBlockly.chargeBlockly(Exercises[0]);
     setListeners();
+    $(".alert").alert();
   }
   var height = $(window).height() - $("#divHeader").height();
   $('#divContent').height(height);
 
-  ILoadXML.loadXMLs(a, Exercises[0])
+  ILoadXML.loadALLXMLs(a);
 });
