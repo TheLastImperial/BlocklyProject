@@ -15,17 +15,6 @@
   <script src="node_modules/skulpt/dist/skulpt-stdlib.js"></script>
 </head>
 <body>
-  <div class="alert alert-warning alert-dismissible fade show"
-    role="alert" style="display: none;">
-    <h6></h6>
-    <button type="button"
-      class="close"
-      data-dismiss="alert"
-      aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
   <div id="divHeader" class="row col-12">
     <div class="col-8">
       <h1 class="text-center">Aprende Python con Blockly de Google</h1>
@@ -55,7 +44,7 @@
         </tr>
         <tr>
           <td>Intentos</td>
-          <td>0</td>
+          <td id="tdTries">0</td>
         </tr>
       </table>
     </div>
@@ -78,7 +67,23 @@
       <div id="divReply" class="border border-primary" ></div>
     </div>
   </div>
-
+  <div class="modal fade" id="modalMsgs"
+    tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="divXmls"></div>
 
   <script type="text/javascript" src="js/texts.js"></script>

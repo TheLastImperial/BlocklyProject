@@ -28,9 +28,24 @@ var onresize = function(e) {
   el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
 };
 
-var showMessage = function(msg){
-  $(".alert h6").text(msg)
-  $(".alert").show();
+var evaluate = function(){
+  var resp = $("#divReply").html();
+  resp = resp.split("\n");
+  var cleanResp = resp.filter(res => res != "");
+  var replyResp = Exercises[Game.currentExerc.id].reply;
+  var flag = false;
+  if(cleanResp.length == replyResp.length){
+     flag = replyResp.every((elem, index, arr) => {
+      return elem == arr[index];
+    });
+  }
+  return flag;
+}
+
+var showMessage = function(title, msg){
+  $("#modalMsgs .modal-title").text(title);
+  $("#modalMsgs .modal-body").text(msg);
+  $("#modalMsgs").modal('show');
 }
 
 var btnStartGame = function(){
@@ -51,26 +66,29 @@ var btnStartGame = function(){
 var btnEvaluarFn = function(){
   Game.currentExerc.tries+= 1;
   var code = IBlockly.blocksToPython();
-  if(code==""){
-    showMessage("Hola que hace");
+  $("#tdTries").text(Game.currentExerc.tries);
+  if(code == ""){
+    showMessage("Error", "Debe ingresar bloques para convertirlo en codigo Python");
+    return;
   }
+  $("#divReply").text("");
   eval(pythonToJs(code));
-  var resp = $("#divReply").html();
-  resp = resp.split("\n");
-  console.log(resp)
-  resp = resp.filter(res => res != "");
-  var flag = Exercises[Game.currentExerc.id].reply.every(resp);
-  console.log(flag)
+  $("#divCode").text(code);
 
+  if(evaluate()){
+    showMessage("Info", "Felicidades has terminado correctamente");
+  }else{
+    showMessage("Info", "Intenta de nuevo");
+  }
 }
 
 var btnCompileFn = function(){
   var code = IBlockly.blocksToPython();
   if(code == null || code.trim() == ""){
-    showMessage("Debe ingresar bloques para convertirlo en codigo Python");
+    showMessage("Error", "Debe ingresar bloques para convertirlo en codigo Python");
     return;
   }
-  $("#divCode").html(code);
+  $("#divCode").text(code);
 }
 
 var setListeners = function(){
