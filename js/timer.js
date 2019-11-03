@@ -18,5 +18,9 @@ var Timer = {
   stop: function (){
     if(timerId)
       clearInterval(timerId);
+  },
+
+  getTime: function(){
+    return m.format("HH:mm:ss");
   }
 }

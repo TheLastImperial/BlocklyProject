@@ -7,6 +7,12 @@ var Exercises = [
     question: "Imprime \"Hola mundo\" en consola",
     reply: [
       "Hola mundo"
+    ],
+    helps: [
+    ],
+    preview: [
+      "Lo primero que vamos a aprender es el clasico \"Hola Mundo\"",
+      "Para esto utilizaremos el comando \"imprimir\" en blockly y agregaremos el texto \"Hola Mundo\""
     ]
   },
   {

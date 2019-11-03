@@ -64,7 +64,7 @@ var btnStartGame = function(){
 }
 
 var btnEvaluarFn = function(){
-  Game.currentExerc.tries+= 1;
+  Game.try();
   var code = IBlockly.blocksToPython();
   $("#tdTries").text(Game.currentExerc.tries);
   if(code == ""){
@@ -77,6 +77,10 @@ var btnEvaluarFn = function(){
 
   if(evaluate()){
     showMessage("Info", "Felicidades has terminado correctamente");
+    Timer.stop();
+    Game.currentExerc.time = Timer.getTime();
+    Game.save();
+    console.log(Game);
   }else{
     showMessage("Info", "Intenta de nuevo");
   }
