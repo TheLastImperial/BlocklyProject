@@ -59,5 +59,27 @@ var Exercises = [
     ],
     blocks: ["controls_repeat_ext"],
     level: "easy"
+  },
+  {
+    toolboxFile: "xmls/toolboxIfFor.xml",
+    startBlocksFile: null,
+    toolboxId: "toolboxIfFor",
+    startBlocksId: null,
+    question: "Escribe un ciclo for del 1 al 10 he imprime todos los numeros que sean divisibles entre 2",
+    reply: [
+      "2", "4", "6", "8", "10"
+    ],
+    helps: [
+      "No olvides utilizar la condicion \"for\"",
+      "No olvides utilizar la condicion \"if\"",
+      "Asegurate de solo imprimir los numeros divisibles entre 2"
+    ],
+    preview: [
+      "Ahora vamos a convinar las 2 instrucciones que hemos aprendido",
+      "Utilizaremos la intruccion matematica 'modulo' para obtener el reciduo de una division.",
+      "Esto se hace utilizando el simbolo de '%'."
+    ],
+    blocks: ["controls_for", "controls_if"],
+    level: "medium"
   }
 ]
