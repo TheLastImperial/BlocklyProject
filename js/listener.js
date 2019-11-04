@@ -36,6 +36,12 @@ var cleanData = function(){
   $("#tdAyuda").text("0");
 }
 
+var setPoints = function(points){
+  var ele = $("#tdPoints")
+  var currentPoints = parseInt($("#tdPoints").text());
+  $("#tdPoints").text(currentPoints + points)
+}
+
 var showMessage = function(title, msg, showNext){
   $("#modalMsgs .modal-title").text(title);
   $("#modalMsgs .modal-body").text(msg);
@@ -77,9 +83,9 @@ var btnEvaluarFn = function(){
   eval(pythonToJs(code));
   $("#divCode").text(code);
   if(Game.evaluate(IBlockly.workspace, $("#divReply").html())){
-    showMessage("Info", "Felicidades has terminado correctamente", true);
     Timer.stop();
     Game.currentExerc.time = Timer.getTime();
+    showMessage("Info", "Felicidades has terminado correctamente", true);
   }else{
     showMessage("Info", "Has cometido un error. Revisa tus bloques o utiliza una ayuda.");
   }
@@ -102,12 +108,16 @@ var btnAyudaFn = function(){
 var btnNextFn = function(){
   $("#modalMsgs .close").trigger("click");
   $("#modalMsgs .close").show();
-  Game.save();
+  setPoints(Game.save())
+  if(Game.hasNext()){
+    $("#btnStartGame").text("Comenzar");
+    $("#btnStartGame").show();
+    $("#divConBlockly").css('visibility', 'hidden');
+    $("#btnStartGame").trigger("click");
+  }else{
+    alert("Felicidades has terminado los ejercicios de Python usando Blockly")
+  }
   $("#divBtns").hide();
-  $("#btnStartGame").text("Comenzar");
-  $("#btnStartGame").show();
-  $("#divConBlockly").css('visibility', 'hidden');
-  $("#btnStartGame").trigger("click");
   cleanData();
 }
 

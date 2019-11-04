@@ -16,7 +16,8 @@ var Exercises = [
       "Lo primero que vamos a aprender es el clasico \"Hola Mundo\"",
       "Para esto utilizaremos el comando \"imprimir\" en blockly y agregaremos el texto \"Hola Mundo\""
     ],
-    blocks: ["text_print"]
+    blocks: ["text_print"],
+    level: "easy"
   },
   {
     toolboxFile: "xmls/toolboxIf.xml",
@@ -36,7 +37,8 @@ var Exercises = [
       "La condicion \"if\" nos sirve para ejecutar una parte de codigo siempre y cuando se cumpla cierta condicion que nosotros coloquemos",
       "En Python la condicion booleana \"True\" representa verdadero y \"False\" representa falso"
     ],
-    blocks: ["controls_if"]
+    blocks: ["controls_if"],
+    level: "easy"
   },
   {
     toolboxFile: "xmls/toolboxMore.xml",

@@ -16,8 +16,10 @@ var Timer = {
   },
 
   stop: function (){
-    if(timerId)
+    if(timerId){
       clearInterval(timerId);
+      timerId = null;
+    }
   },
 
   getTime: function(){

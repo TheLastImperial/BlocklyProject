@@ -5,13 +5,22 @@ var Game = {
     this.currentExerc.tries += 1;
   },
   save: function() {
-    this.finishExercises.push(this.currentExerc);
     var idS = this.currentExerc.id;
     if(idS == Exercises.length - 1){
-      console.log("Todo")
+      return this.currentExerc.points;
     } else {
       idS += 1;
     }
+    var seconds = moment(this.currentExerc.time, 'HH:mm:ss')
+      .diff(moment().startOf('day'), 'seconds');
+    var points = Fuzzy.calculate(Fuzzy[this.getExercise().level],
+      [ this.currentExerc.tries,
+      seconds,
+      this.currentExerc.helps
+    ]);
+    points = Math.round(points);
+    this.currentExerc.points = points;
+    this.finishExercises.push(this.currentExerc);
     this.currentExerc = {
       id: idS,
       help: 0,
@@ -23,6 +32,7 @@ var Game = {
       currentHelp: 0
     };
     this.isExplication = true;
+    return points;
   },
   init: function(){
     if(this.currentExerc == null){
@@ -68,7 +78,6 @@ var Game = {
     var flag = true;
     for (var i = this.getExercise().blocks.length - 1; i >= 0; i--) {
       var types = workspace.getBlocksByType(this.getExercise().blocks[i], false);
-      console.log(types)
       if(types.length == 0){
         flag = false;
         break;
@@ -91,5 +100,8 @@ var Game = {
       flag = false;
     }
     return flag;
+  },
+  hasNext: function(){
+    return this.getExercise().id == Exercises.length - 1;
   }
 }
