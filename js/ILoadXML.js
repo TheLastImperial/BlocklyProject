@@ -33,6 +33,7 @@ var ILoadXML = {
     var d1 = $.Deferred();
     var d2 = $.Deferred();
     var d3 = $.Deferred();
+    var d4 = $.Deferred();
 
     var tmpDiv = $("<div></div>");
 

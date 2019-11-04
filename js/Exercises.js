@@ -45,9 +45,9 @@ var Exercises = [
     startBlocksFile: null,
     toolboxId: "toolboxFor",
     startBlocksId: null,
-    question: "Escribe un ciclo for que imprima los numeros del 1 al 5",
+    question: "Escribe un ciclo \"for\" que imprima 5 veces la palabra \"Hola\"",
     reply: [
-      "1", "2", "3", "4", "5"
+      "Hola", "Hola", "Hola", "Hola", "Hola"
     ],
     helps: [
       "No olvides utilizar la condicion \"for\"",
@@ -55,7 +55,7 @@ var Exercises = [
     ],
     preview: [
       "Ahora vamos a hablar sobre los ciclos en especifico el ciclo \"for\"",
-      "El ciclo for nos sirve para ejecutar una instruccion cierta cantidad de veces dada por una condicion"
+      "El ciclo for nos sirve para ejecutar una instruccion cierta cantidad de veces establecida."
     ],
     blocks: ["controls_repeat_ext"],
     level: "easy"
