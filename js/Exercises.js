@@ -41,11 +41,23 @@ var Exercises = [
     level: "easy"
   },
   {
-    toolboxFile: "xmls/toolboxMore.xml",
+    toolboxFile: "xmls/toolboxFor.xml",
     startBlocksFile: null,
-    toolboxId: "toolbox2",
+    toolboxId: "toolboxFor",
     startBlocksId: null,
-    question: "",
-    reply: []
+    question: "Escribe un ciclo for que imprima los numeros del 1 al 5",
+    reply: [
+      "1", "2", "3", "4", "5"
+    ],
+    helps: [
+      "No olvides utilizar la condicion \"for\"",
+      "Asegurate de escribir exactamente igual texto del 1 al 5"
+    ],
+    preview: [
+      "Ahora vamos a hablar sobre los ciclos en especifico el ciclo \"for\"",
+      "El ciclo for nos sirve para ejecutar una instruccion cierta cantidad de veces dada por una condicion"
+    ],
+    blocks: ["controls_repeat_ext"],
+    level: "easy"
   }
 ]

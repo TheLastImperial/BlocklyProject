@@ -102,6 +102,6 @@ var Game = {
     return flag;
   },
   hasNext: function(){
-    return this.getExercise().id == Exercises.length - 1;
+    return !(this.getExercise().id == Exercises.length - 1);
   }
 }
