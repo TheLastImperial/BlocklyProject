@@ -15,25 +15,28 @@ var Exercises = [
     preview: [
       "Lo primero que vamos a aprender es el clasico \"Hola Mundo\"",
       "Para esto utilizaremos el comando \"imprimir\" en blockly y agregaremos el texto \"Hola Mundo\""
-    ]
+    ],
+    blocks: ["text_print"]
   },
   {
-    toolboxFile: "xmls/toolbox.xml",
-    startBlocksFile: "xmls/defaultBlocks.xml",
-    toolboxId: "toolbox",
-    startBlocksId: "startBlocks",
-    question: "Imprime \"Hola mundo\" en consola",
+    toolboxFile: "xmls/toolboxIf.xml",
+    startBlocksFile: null,
+    toolboxId: "toolboxIf",
+    startBlocksId: null,
+    question: "Escribe una condicion verdadera que imprima \"Hola mundo IF\". Usando la condicion \"if\" en Blockly",
     reply: [
-      "Hola mundo"
+      "Hola mundo IF"
     ],
     helps: [
-      "Seguundo ejercicio",
-      "Otro parrafo"
+      "No olvides utilizar la condicion \"if\"",
+      "Asegurate de escribir exactamente igual texto \"Hola mundo IF\""
     ],
     preview: [
-      "Soy preview",
-      "Mas preview"
-    ]
+      "Ahora vamos a hablar sobre la condicion \"if\"",
+      "La condicion \"if\" nos sirve para ejecutar una parte de codigo siempre y cuando se cumpla cierta condicion que nosotros coloquemos",
+      "En Python la condicion booleana \"True\" representa verdadero y \"False\" representa falso"
+    ],
+    blocks: ["controls_if"]
   },
   {
     toolboxFile: "xmls/toolboxMore.xml",

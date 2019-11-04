@@ -76,8 +76,7 @@ var btnEvaluarFn = function(){
   $("#divReply").text("");
   eval(pythonToJs(code));
   $("#divCode").text(code);
-
-  if(Game.evaluate($("#divReply").html())){
+  if(Game.evaluate(IBlockly.workspace, $("#divReply").html())){
     showMessage("Info", "Felicidades has terminado correctamente", true);
     Timer.stop();
     Game.currentExerc.time = Timer.getTime();

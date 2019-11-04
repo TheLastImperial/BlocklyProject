@@ -64,11 +64,22 @@ var Game = {
   getReply: function(){
     return this.getExercise().reply;
   },
-  evaluate: function(resp){
+  evaluate: function(workspace, resp){
+    var flag = true;
+    for (var i = this.getExercise().blocks.length - 1; i >= 0; i--) {
+      var types = workspace.getBlocksByType(this.getExercise().blocks[i], false);
+      console.log(types)
+      if(types.length == 0){
+        flag = false;
+        break;
+      }
+    }
+    if(!flag){
+      return false;
+    }
     resp = resp.split("\n");
     var cleanResp = resp.filter(res => res != "");
     var replyResp = this.getReply();
-    var flag = true;
     if(cleanResp.length == replyResp.length){
       for (var i = replyResp.length - 1; i >= 0; i--) {
         if(replyResp[i] != cleanResp[i]){

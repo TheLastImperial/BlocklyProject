@@ -2,7 +2,8 @@ var ILoadXML = {
   files: [
     'xmls/defaultBlocks.xml',
     'xmls/toolbox.xml',
-    'xmls/toolboxHW.xml'
+    'xmls/toolboxHW.xml',
+    'xmls/toolboxIf.xml'
   ],
   loadXMLs: function(exec, exercise){
     var d0 = $.Deferred();
@@ -30,6 +31,7 @@ var ILoadXML = {
     var d0 = $.Deferred();
     var d1 = $.Deferred();
     var d2 = $.Deferred();
+    var d3 = $.Deferred();
 
     var tmpDiv = $("<div></div>");
 
@@ -49,6 +51,11 @@ var ILoadXML = {
       d2.resolve();
     });
 
-    $.when(d0, d1, d2).done(exec);
+    tmpDiv.load(this.files[3], function() {
+      $('#divXmls').append(tmpDiv.children())
+      d3.resolve();
+    });
+
+    $.when(d0, d1, d2, d3).done(exec);
   }
 }
