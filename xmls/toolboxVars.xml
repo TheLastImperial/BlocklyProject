@@ -1,0 +1,7 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolboxVars" style="display: none">
+  <category name="Crear variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+  <category name="Text" colour="%{BKY_TEXTS_HUE}">
+    <block type="text"></block>
+    <block type="text_print"></block>
+  </category>
+</xml>

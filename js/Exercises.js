@@ -61,6 +61,28 @@ var Exercises = [
     level: "easy"
   },
   {
+    toolboxFile: "xmls/toolboxVars.xml",
+    startBlocksFile: null,
+    toolboxId: "toolboxVars",
+    startBlocksId: null,
+    question: "Escribe una variable String con el texto 'Valor inicial' y cambia su valor por 'Valor final'. Imprime estos dos valores.",
+    reply: [
+      "Valor inicial", "Valor final"
+    ],
+    helps: [
+      "Asegurate de que los textos sean identicos a los solicitados.",
+      "Asegurate de crear una variable para este ejercicio.",
+      "Asegurate de cambiar el valor de la misma variable que inicializaste."
+    ],
+    preview: [
+      "Vamos a ver un poco sobre variables",
+      "En Python una variable es aquella que utilizamos para guardar valores los cuales utilizamos para realizar ciertas tareas.",
+      "Estas variables pueden tomar distintos valores en tiempo de ejecucion."
+    ],
+    blocks: ["text_print", "variables_set", "variables_get"],
+    level: "medium"
+  },
+  {
     toolboxFile: "xmls/toolboxIfFor.xml",
     startBlocksFile: null,
     toolboxId: "toolboxIfFor",
@@ -79,7 +101,7 @@ var Exercises = [
       "Utilizaremos la intruccion matematica 'modulo' para obtener el reciduo de una division.",
       "Esto se hace utilizando el simbolo de '%'."
     ],
-    blocks: ["controls_for", "controls_if"],
+    blocks: ["controls_for", "controls_if", "math_modulo"],
     level: "medium"
   }
 ]
