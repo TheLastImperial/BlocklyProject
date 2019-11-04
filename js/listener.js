@@ -28,39 +28,41 @@ var onresize = function(e) {
   el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
 };
 
-var evaluate = function(){
-  var resp = $("#divReply").html();
-  resp = resp.split("\n");
-  var cleanResp = resp.filter(res => res != "");
-  var replyResp = Exercises[Game.currentExerc.id].reply;
-  var flag = false;
-  if(cleanResp.length == replyResp.length){
-     flag = replyResp.every((elem, index, arr) => {
-      return elem == arr[index];
-    });
-  }
-  return flag;
+var cleanData = function(){
+  $("#divReply").empty();
+  $("#divCode").empty();
+  $("#btnTimer").text("00:00:00");
+  $("#tdTries").text("0");
+  $("#tdAyuda").text("0");
 }
 
-var showMessage = function(title, msg){
+var showMessage = function(title, msg, showNext){
   $("#modalMsgs .modal-title").text(title);
   $("#modalMsgs .modal-body").text(msg);
+  if(showNext){
+    $("#modalMsgs .close").hide();
+    $("#modalMsgs .modal-footer").show();
+  }else{
+    $("#modalMsgs .close").show();
+    $("#modalMsgs .modal-footer").hide();
+  }
   $("#modalMsgs").modal('show');
 }
 
 var btnStartGame = function(){
-  Timer.start();
-  var exerc = Exercises[0];
-  IBlockly.chargeBlockly(exerc);
-  $("#divInstruction").html(exerc.question);
-  $("#divBtns").show();
-  Game.currentExerc = {
-    id: 0,
-    tries: 0,
-    time: "",
-    points: 0,
-    finish: false
-  };
+  if(Game.isExplication){
+    $("#divInstruction").empty();
+    $("#divInstruction").append(Game.getExplication());
+    $("#btnStartGame").text("Comenzar");
+  }else{
+    IBlockly.chargeBlockly(Game.getExercise());
+    $("#divInstruction").html(Game.getExercise().question);
+    $("#divConBlockly").css('visibility', 'visible');
+    $("#divBtns").show();
+    $(window).trigger("resize");
+    Timer.start();
+    $("#btnStartGame").hide();
+  }
 }
 
 var btnEvaluarFn = function(){
@@ -75,14 +77,12 @@ var btnEvaluarFn = function(){
   eval(pythonToJs(code));
   $("#divCode").text(code);
 
-  if(evaluate()){
-    showMessage("Info", "Felicidades has terminado correctamente");
+  if(Game.evaluate($("#divReply").html())){
+    showMessage("Info", "Felicidades has terminado correctamente", true);
     Timer.stop();
     Game.currentExerc.time = Timer.getTime();
-    Game.save();
-    console.log(Game);
   }else{
-    showMessage("Info", "Intenta de nuevo");
+    showMessage("Info", "Has cometido un error. Revisa tus bloques o utiliza una ayuda.");
   }
 }
 
@@ -95,8 +95,29 @@ var btnCompileFn = function(){
   $("#divCode").text(code);
 }
 
+var btnAyudaFn = function(){
+  showMessage("Ayuda", Game.getHelp());
+  $("#tdAyuda").text(Game.currentExerc.helps);
+}
+
+var btnNextFn = function(){
+  $("#modalMsgs .close").trigger("click");
+  $("#modalMsgs .close").show();
+  Game.save();
+  $("#divBtns").hide();
+  $("#btnStartGame").text("Comenzar");
+  $("#btnStartGame").show();
+  $("#divConBlockly").css('visibility', 'hidden');
+  $("#btnStartGame").trigger("click");
+  cleanData();
+}
+
 var setListeners = function(){
   $("#btnStartGame").on("click", btnStartGame);
   $("#btnCompile").on("click", btnCompileFn);
   $("#btnEvaluar").on("click", btnEvaluarFn);
+  $("#btnAyuda").on("click", btnAyudaFn);
+  $("#btnNext").on("click", btnNextFn);
+  $("#divConBlockly").css('visibility', 'hidden');
+  Game.init();
 }

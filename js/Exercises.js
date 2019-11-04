@@ -9,6 +9,8 @@ var Exercises = [
       "Hola mundo"
     ],
     helps: [
+      "En la seccion de texto debes utilizar el bloque de \"imprimir\" y despues agregar el texto \"Hola mundo\"",
+      "Valida que tu texto es exactamente igual a \"Hola mundo\""
     ],
     preview: [
       "Lo primero que vamos a aprender es el clasico \"Hola Mundo\"",
@@ -23,6 +25,14 @@ var Exercises = [
     question: "Imprime \"Hola mundo\" en consola",
     reply: [
       "Hola mundo"
+    ],
+    helps: [
+      "Seguundo ejercicio",
+      "Otro parrafo"
+    ],
+    preview: [
+      "Soy preview",
+      "Mas preview"
     ]
   },
   {

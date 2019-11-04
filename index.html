@@ -25,7 +25,7 @@
           Pulsa comenzar.
         </div>
         <button id="btnStartGame" type="button" class="btn btn-outline-success">
-          Comenzar
+          Siguiente
         </button>
       </div>
     </div>
@@ -47,6 +47,10 @@
           <td>Intentos</td>
           <td id="tdTries">0</td>
         </tr>
+        <tr>
+          <td>Ayudas</td>
+          <td id="tdAyuda">0</td>
+        </tr>
       </table>
     </div>
   </div>
@@ -61,6 +65,9 @@
         </button>
         <button id="btnEvaluar" class="btn btn-outline-primary">
           Evaluar
+        </button>
+        <button id="btnAyuda" class="btn btn-outline-primary">
+          Ayuda
         </button>
       </div>
       <div id="divCode" class="col-md-12 border border-primary" >
@@ -82,6 +89,11 @@
         </div>
         <div class="modal-body">
         </div>
+        <div class="modal-footer">
+          <button id="btnNext" type="button" class="btn btn-primary">
+            Siguiente ejercicio
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -89,8 +101,8 @@
 
   <script type="text/javascript" src="js/texts.js"></script>
   <script type="text/javascript" src="js/timer.js"></script>
-  <script type="text/javascript" src="js/IGame.js"></script>
   <script type="text/javascript" src="js/Exercises.js"></script>
+  <script type="text/javascript" src="js/IGame.js"></script>
   <script type="text/javascript" src="js/ILoadXML.js"></script>
   <script type="text/javascript" src="js/IBlockly.js"></script>
   <script type="text/javascript" src="js/ISkultp.js"></script>
