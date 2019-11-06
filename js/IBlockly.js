@@ -10,7 +10,7 @@ var IBlockly = {
     var eleTool = document.getElementById(exercise.toolboxId);
 
     this.workspace = Blockly.inject('blocklyDiv', {
-      media: 'node_modules/blockly/media/',
+      media: 'js/libs/blockly/media/',
       toolbox: eleTool
     });
 
