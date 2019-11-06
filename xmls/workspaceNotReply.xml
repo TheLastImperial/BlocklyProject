@@ -1,0 +1,24 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="workspaceNotReply" style="display: none">
+  <variables>
+    <variable id="KUzaWPQr:!dS/MGw,8mO">a</variable>
+    <variable id="A%2;oKYL9GtE7PF|m8G)">b</variable>
+  </variables>
+  <block type="variables_set" id="PyAkrC/{gKP?9NZvzpIM" x="16" y="54">
+    <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+    <value name="VALUE">
+      <block type="math_number" id="5K5;Dpnv@eaa[i^(WLZ|">
+        <field name="NUM">10</field>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="_40TvH=xL{wOG8?g$l!O">
+        <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+        <value name="VALUE">
+          <block type="math_number" id="Ju{kM.%ZCV{a{w8Ep#Fv">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+</xml>
