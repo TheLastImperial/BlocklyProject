@@ -14,13 +14,19 @@ var IBlockly = {
       toolbox: eleTool
     });
 
+    this.workspace.addChangeListener(function(){
+      var code = IBlockly.blocksToPython();
+      $("#divCode").text(code);
+    });
+
     var ele = document.getElementById(exercise.startBlocksId);
     if(ele != null){
+      var eleWS = this.workspace;
       Blockly.Xml.domToWorkspace(
         ele,
-        this.workspace
+        eleWS
       );
-    $("#blocklyDiv").trigger("resize")
     }
+    $("#blocklyDiv").trigger("resize")
   }
 }

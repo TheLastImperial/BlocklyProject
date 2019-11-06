@@ -6,7 +6,10 @@ var ILoadXML = {
     'xmls/toolboxIf.xml',
     'xmls/toolboxFor.xml',
     'xmls/toolboxIfFor.xml',
-    'xmls/toolboxVars.xml'
+    'xmls/toolboxVars.xml',
+    'xmls/toolboxMore.xml',
+    'xmls/workspaceReply.xml',
+    'xmls/toolboxHard.xml'
   ],
   loadXMLs: function(exec, exercise){
     var d0 = $.Deferred();
@@ -38,6 +41,9 @@ var ILoadXML = {
     var d4 = $.Deferred();
     var d5 = $.Deferred();
     var d6 = $.Deferred();
+    var d7 = $.Deferred();
+    var d8 = $.Deferred();
+    var d9 = $.Deferred();
 
     var tmpDiv = $("<div></div>");
 
@@ -77,7 +83,21 @@ var ILoadXML = {
       d6.resolve();
     });
 
+    tmpDiv.load(this.files[7], function() {
+      $('#divXmls').append(tmpDiv.children())
+      d7.resolve();
+    });
 
-    $.when(d0, d1, d2, d3, d4, d5, d6).done(exec);
+    tmpDiv.load(this.files[8], function() {
+      $('#divXmls').append(tmpDiv.children())
+      d8.resolve();
+    });
+
+    tmpDiv.load(this.files[9], function() {
+      $('#divXmls').append(tmpDiv.children())
+      d9.resolve();
+    });
+
+    $.when(d0, d1, d2, d3, d4, d5, d6, d7, d8, d9).done(exec);
   }
 }
