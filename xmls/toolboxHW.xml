@@ -1,0 +1,6 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolboxHW" style="display: none">
+  <category name="Text" colour="%{BKY_TEXTS_HUE}">
+    <block type="text"></block>
+    <block type="text_print"></block>
+  </category>
+</xml>

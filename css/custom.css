@@ -1,5 +1,5 @@
 #divCode {
-  height: 200px;
+  height: 45%;
   white-space: pre-wrap;
   overflow-y: scroll;
 }
@@ -7,6 +7,24 @@
 #divEjercicio{
   height: 200px;
   overflow-y: scroll;
+}
+
+#divReply{
+  height: 45%;
+  white-space: pre-wrap;
+}
+
+#divXmls{
+  display: none;
+}
+
+#divBtns{
+  display: none;
+}
+
+.alert {
+  display: none;
+  z-index: 5;
 }
 
 body{

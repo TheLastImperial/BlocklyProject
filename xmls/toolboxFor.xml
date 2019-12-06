@@ -1,0 +1,15 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolboxFor" style="display: none">
+  <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+    <block type="controls_repeat_ext">
+      <value name="TIMES">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category name="Text" colour="%{BKY_TEXTS_HUE}">
+    <block type="text"></block>
+    <block type="text_print"></block>
+  </category>
+</xml>

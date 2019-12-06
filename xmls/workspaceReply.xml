@@ -1,0 +1,144 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="workspaceReply" style="display: none">
+  <variables>
+    <variable id="KUzaWPQr:!dS/MGw,8mO">a</variable>
+    <variable id="A%2;oKYL9GtE7PF|m8G)">b</variable>
+    <variable id="Qb4TfOx|4]bJ^Ow^4,T#">c</variable>
+    <variable id="ENcZJ/OdBxGisLZy,=j]">d</variable>
+  </variables>
+  <block type="variables_set" id="PyAkrC/{gKP?9NZvzpIM" x="16" y="54">
+    <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+    <value name="VALUE">
+      <block type="math_number" id="5K5;Dpnv@eaa[i^(WLZ|">
+        <field name="NUM">10</field>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="_40TvH=xL{wOG8?g$l!O">
+        <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+        <value name="VALUE">
+          <block type="math_number" id="Ju{kM.%ZCV{a{w8Ep#Fv">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="Ci]68[A-wVu=s,)ZmX1V">
+            <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+            <value name="VALUE">
+              <block type="math_number" id="R-g}86WnFatTLM3PY{TP">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="?+jO)w=xX/zO*I]A[{+G">
+                <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                <value name="VALUE">
+                  <block type="math_number" id="x{2+#A{;V`(}$pT-5{BW">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="aDB?rxg2W{j(yu#RaqGX">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="gw%Na(38%Z#BV^sd4sMo">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="]!E1*q6eEyY`:3u!Fc|D">
+                            <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="T{08!wo!PTx8N;z3x$cK">
+                            <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="r3nE6YNu^V#cfLO1Tr+F">
+                        <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                        <value name="VALUE">
+                          <block type="variables_get" id="Y^8pXRj}r1@Uq7sTi=-6">
+                            <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="e`SD[7u@j*!}?EM#rwFK">
+                            <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="gLV8:#R@-9@OVv[vMT__">
+                                <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="variables_set" id="1SSdzRXfu,+YXm2k:B]$">
+                        <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                        <value name="VALUE">
+                          <block type="variables_get" id="^C50@F,yB+-/3jTcAxZw">
+                            <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="1.|ptBt,F0Y}2#j$!)Dm">
+                            <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="R*$BB*kF]p)CtZV/Medy">
+                                <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_repeat_ext" id=",k-vk{$7}wa8sAd]pR-_">
+                        <value name="TIMES">
+                          <block type="variables_get" id="RgVfmyzFA8MPJ|IJvmzx">
+                            <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="variables_set" id="60~#N5r:0(5c.pI]NiY%">
+                            <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id="1@,X0!9roHDnYla1~OHB">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <block type="variables_get" id="d~O!QO#Q_,pq:4Z9CDUq">
+                                    <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="XQoq(c{zDWhKts]no7Fa">
+                                    <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="text_print" id="${Pa[a$[`vR+$^3J;E+O">
+                            <value name="TEXT">
+                              <block type="variables_get" id="^zy3Hb?muw+V?)nJt5w2">
+                                <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

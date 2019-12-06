@@ -3,86 +3,113 @@
 <head>
   <meta charset="utf-8">
   <title>Blockly Demo: Generating JavaScript</title>
-  <script src="node_modules/blockly/blockly.js"></script>
-  <script src="node_modules/blockly/blocks.js"></script>
-  <script src="node_modules/blockly/python.js"></script>
-  <script src="node_modules/blockly/msg/es.js"></script>
+  <script src="js/libs/blockly/blockly.js"></script>
+  <script src="js/libs/blockly/blocks.js"></script>
+  <script src="js/libs/blockly/python.js"></script>
+  <script src="js/libs/blockly/msg/es.js"></script>
+  <script src="js/libs/jquery.js"></script>
+  <script src="js/libs/bootstrap.min.js"></script>
+  <script src="js/libs/moment.js"></script>
+  <script src="js/libs/skulpt.min.js"></script>
+  <script src="js/libs/skulpt-stdlib.js"></script>
+  <script src="js/libs/fuzzy-min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
-  <script src="node_modules/moment/moment.js"></script>
-  <script src="node_modules/jquery/dist/jquery.js"></script>
-  <script src="node_modules/skulpt/dist/skulpt.min.js"></script>
-  <script src="node_modules/skulpt/dist/skulpt-stdlib.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
-  <div class="row">
+  <div id="divHeader" class="row col-12">
+    <div class="col-8">
+      <h1 class="text-center">Aprende Python con Blockly de Google</h1>
+      <div class="form-inline">
+        <div id="divInstruction" class="col-10">
+          Bienvenido al sistema de aprendizaje para Python usando Google Blockly
+          Pulsa comenzar.
+        </div>
+        <button id="btnStartGame" type="button" class="btn btn-outline-success">
+          Siguiente
+        </button>
+      </div>
+    </div>
+    <div class="col-4">
+      <table class="table">
+        <tr>
+          <td>Tiempo</td>
+          <td>
+            <span id="btnTimer">
+              00:00:00
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>Puntuación</td>
+          <td id="tdPoints">0</td>
+        </tr>
+        <tr>
+          <td>Intentos</td>
+          <td id="tdTries">0</td>
+        </tr>
+        <tr>
+          <td>Ayudas</td>
+          <td id="tdAyuda">0</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="divContent" class="row">
     <div id="divConBlockly" class="col-md-8">
       <div id="blocklyDiv" style="height: 100%; width: 100%;"></div>
     </div>
     <div class="col-md-4">
-      <div id="divBtnsTut" class="col-md-12" >
-        <button id="btnNext" type="button" class="btn btn-primary">
-          Siguiente
+      <div id="divBtns" class="form-line">
+        <button id="btnCompile" class="btn btn-outline-primary">
+          Convertir a Python
         </button>
-        <span id="btnTimer" class="border border-primary">00:00:00</span>
-        <span>Intentos: <span>0</span></span>
-      </div>
-      <div id="divEjercicio" class="col-md-12 border border-primary">
-      </div>
-      <div class="col-md-12">
-        <button id="btnCompile" class="btn btn-primary">
-          Compilar
-        </button>
-        <button id="btnEvaluar" class="btn btn-primary">
+        <button id="btnEvaluar" class="btn btn-outline-primary">
           Evaluar
         </button>
-        <button id="btnPlay" class="btn btn-primary">
-          Play
+        <button id="btnAyuda" class="btn btn-outline-primary">
+          Ayuda
         </button>
       </div>
       <div id="divCode" class="col-md-12 border border-primary" >
       </div>
+      <div id="divReply" class="border border-primary" ></div>
     </div>
   </div>
-
-  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-    <category name="Logic" colour="%{BKY_LOGIC_HUE}">
-      <block type="controls_if"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
-      <block type="logic_boolean"></block>
-    </category>
-    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
-      <block type="controls_repeat_ext">
-        <value name="TIMES">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="controls_whileUntil"></block>
-    </category>
-    <category name="Math" colour="%{BKY_MATH_HUE}">
-      <block type="math_number">
-        <field name="NUM">123</field>
-      </block>
-      <block type="math_arithmetic"></block>
-      <block type="math_single"></block>
-    </category>
-    <category name="Text" colour="%{BKY_TEXTS_HUE}">
-      <block type="text"></block>
-      <block type="text_length"></block>
-      <block type="text_print"></block>
-    </category>
-  </xml>
-
+  <div class="modal fade" id="modalMsgs"
+    tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button id="btnNext" type="button" class="btn btn-primary">
+            Siguiente ejercicio
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="divXmls"></div>
 
   <script type="text/javascript" src="js/texts.js"></script>
   <script type="text/javascript" src="js/timer.js"></script>
-  <script type="text/javascript" src="js/init.js"></script>
+  <script type="text/javascript" src="js/Exercises.js"></script>
+  <script type="text/javascript" src="js/IFuzzy.js"></script>
+  <script type="text/javascript" src="js/IGame.js"></script>
+  <script type="text/javascript" src="js/ILoadXML.js"></script>
+  <script type="text/javascript" src="js/IBlockly.js"></script>
+  <script type="text/javascript" src="js/ISkultp.js"></script>
   <script type="text/javascript" src="js/listener.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/custom.css">
 </body>
 </html>
