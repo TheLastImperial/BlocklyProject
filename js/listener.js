@@ -61,6 +61,7 @@ var btnStartGame = function(){
     $("#divInstruction").append(Game.getExplication());
     $("#btnStartGame").text("Comenzar");
   }else{
+    initCam();
     IBlockly.chargeBlockly(Game.getExercise());
     $("#divInstruction").html(Game.getExercise().question);
     $("#divConBlockly").css('visibility', 'visible');
@@ -86,6 +87,7 @@ var btnEvaluarFn = function(){
     Timer.stop();
     Game.currentExerc.time = Timer.getTime();
     showMessage("Info", "Felicidades has terminado correctamente", true);
+    stopWebCam();
   }else{
     showMessage("Info", "Has cometido un error. Revisa tus bloques o utiliza una ayuda.");
   }
@@ -128,5 +130,9 @@ var setListeners = function(){
   $("#btnAyuda").on("click", btnAyudaFn);
   $("#btnNext").on("click", btnNextFn);
   $("#divConBlockly").css('visibility', 'hidden');
+  $('#modalMsgs').on('hidden.bs.modal', function () {
+    console.log("Hola que hace")
+    Timer.restart();
+  });
   Game.init();
 }

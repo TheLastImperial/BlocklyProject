@@ -13,10 +13,15 @@
   <script src="js/libs/skulpt.min.js"></script>
   <script src="js/libs/skulpt-stdlib.js"></script>
   <script src="js/libs/fuzzy-min.js"></script>
+  <script src="js/libs/webcam.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
+  <div style="position: fixed; z-index: 99999; bottom: 0; left: 0;">
+    <div id="divVideo" ></div>
+    <label id="lblFeel"></label>
+  </div>
   <div id="divHeader" class="row col-12">
     <div class="col-8">
       <h1 class="text-center">Aprende Python con Blockly de Google</h1>
@@ -84,7 +89,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close"
+            data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -98,7 +104,708 @@
       </div>
     </div>
   </div>
-  <div id="divXmls"></div>
+  <div id="divXmls">
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">
+      <block type="controls_if" inline="false" x="20" y="20">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" inline="true">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="math_arithmetic" inline="true">
+                <field name="OP">MULTIPLY</field>
+                <value name="A">
+                  <block type="math_number">
+                    <field name="NUM">6</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number">
+                    <field name="NUM">7</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number">
+                <field name="NUM">42</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="text_print" inline="false">
+            <value name="TEXT">
+              <block type="text">
+                <field name="TEXT">Don't panic</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="text_print" inline="false">
+            <value name="TEXT">
+              <block type="text">
+                <field name="TEXT">Panic</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+      <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+      </category>
+      <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_whileUntil"></block>
+      </category>
+      <category name="Math" colour="%{BKY_MATH_HUE}">
+        <block type="math_number">
+          <field name="NUM">123</field>
+        </block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+      </category>
+      <category name="Text" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_length"></block>
+        <block type="text_print"></block>
+      </category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolboxFor" style="display: none">
+      <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <category name="Text" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolboxHard" style="display: none">
+      <category name="Logica" colour="%{BKY_LOGIC_HUE}">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+      </category>
+      <category name="Ciclos" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <category name="Matematicas" colour="%{BKY_MATH_HUE}">
+        <block type="math_number">
+          <field name="NUM">123</field>
+        </block>
+        <block type="math_arithmetic">
+          <value name="A">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <category name="Texto" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_print">
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <sep></sep>
+      <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolboxHW" style="display: none">
+      <category name="Text" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolboxIf" style="display: none">
+      <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+      </category>
+      <category name="Text" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolboxIfFor" style="display: none">
+      <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+      </category>
+      <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_for">
+          <value name="FROM">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="TO">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
+          </value>
+          <value name="BY">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <category name="Math" colour="%{BKY_MATH_HUE}">
+        <block type="math_number">
+          <field name="NUM">123</field>
+        </block>
+        <block type="math_modulo">
+          <value name="DIVIDEND">
+            <shadow type="math_number">
+              <field name="NUM">64</field>
+            </shadow>
+          </value>
+          <value name="DIVISOR">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <category name="Crear variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+      <category name="Text" colour="%{BKY_TEXTS_HUE}">
+        <block type="text_print"></block>
+      </category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox2" style="display: none">
+      <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null"></block>
+        <block type="logic_ternary"></block>
+      </category>
+      <category name="%{BKY_CATLOOPS}" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+          <value name="FROM">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="TO">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
+          </value>
+          <value name="BY">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
+      </category>
+      <category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
+        <block type="math_number">
+          <field name="NUM">123</field>
+        </block>
+        <block type="math_arithmetic">
+          <value name="A">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_single">
+          <value name="NUM">
+            <shadow type="math_number">
+              <field name="NUM">9</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_trig">
+          <value name="NUM">
+            <shadow type="math_number">
+              <field name="NUM">45</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_constant"></block>
+        <block type="math_number_property">
+          <value name="NUMBER_TO_CHECK">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_round">
+          <value name="NUM">
+            <shadow type="math_number">
+              <field name="NUM">3.1</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo">
+          <value name="DIVIDEND">
+            <shadow type="math_number">
+              <field name="NUM">64</field>
+            </shadow>
+          </value>
+          <value name="DIVISOR">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_constrain">
+          <value name="VALUE">
+            <shadow type="math_number">
+              <field name="NUM">50</field>
+            </shadow>
+          </value>
+          <value name="LOW">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="HIGH">
+            <shadow type="math_number">
+              <field name="NUM">100</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_random_int">
+          <value name="FROM">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="TO">
+            <shadow type="math_number">
+              <field name="NUM">100</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="math_random_float"></block>
+        <block type="math_atan2">
+          <value name="X">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="Y">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_join"></block>
+        <block type="text_append">
+          <value name="TEXT">
+            <shadow type="text"></shadow>
+          </value>
+        </block>
+        <block type="text_length">
+          <value name="VALUE">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_isEmpty">
+          <value name="VALUE">
+            <shadow type="text">
+              <field name="TEXT"></field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_indexOf">
+          <value name="VALUE">
+            <block type="variables_get">
+              <field name="VAR">{textVariable}</field>
+            </block>
+          </value>
+          <value name="FIND">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_charAt">
+          <value name="VALUE">
+            <block type="variables_get">
+              <field name="VAR">{textVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="text_getSubstring">
+          <value name="STRING">
+            <block type="variables_get">
+              <field name="VAR">{textVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="text_changeCase">
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_trim">
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_print">
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_prompt_ext">
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <category name="%{BKY_CATLISTS}" colour="%{BKY_LISTS_HUE}">
+        <block type="lists_create_with">
+          <mutation items="0"></mutation>
+        </block>
+        <block type="lists_create_with"></block>
+        <block type="lists_repeat">
+          <value name="NUM">
+            <shadow type="math_number">
+              <field name="NUM">5</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="lists_length"></block>
+        <block type="lists_isEmpty"></block>
+        <block type="lists_indexOf">
+          <value name="VALUE">
+            <block type="variables_get">
+              <field name="VAR">{listVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_getIndex">
+          <value name="VALUE">
+            <block type="variables_get">
+              <field name="VAR">{listVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_setIndex">
+          <value name="LIST">
+            <block type="variables_get">
+              <field name="VAR">{listVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_getSublist">
+          <value name="LIST">
+            <block type="variables_get">
+              <field name="VAR">{listVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="lists_split">
+          <value name="DELIM">
+            <shadow type="text">
+              <field name="TEXT">,</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="lists_sort"></block>
+      </category>
+      <category name="%{BKY_CATCOLOUR}" colour="%{BKY_COLOUR_HUE}">
+        <block type="colour_picker"></block>
+        <block type="colour_random"></block>
+        <block type="colour_rgb">
+          <value name="RED">
+            <shadow type="math_number">
+              <field name="NUM">100</field>
+            </shadow>
+          </value>
+          <value name="GREEN">
+            <shadow type="math_number">
+              <field name="NUM">50</field>
+            </shadow>
+          </value>
+          <value name="BLUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="colour_blend">
+          <value name="COLOUR1">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#ff0000</field>
+            </shadow>
+          </value>
+          <value name="COLOUR2">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#3333ff</field>
+            </shadow>
+          </value>
+          <value name="RATIO">
+            <shadow type="math_number">
+              <field name="NUM">0.5</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+      <sep></sep>
+      <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+      <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolboxVars" style="display: none">
+      <category name="Crear variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+      <category name="Text" colour="%{BKY_TEXTS_HUE}">
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </category>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceNotReply" style="display: none">
+      <variables>
+        <variable id="KUzaWPQr:!dS/MGw,8mO">a</variable>
+        <variable id="A%2;oKYL9GtE7PF|m8G)">b</variable>
+      </variables>
+      <block type="variables_set" id="PyAkrC/{gKP?9NZvzpIM" x="16" y="54">
+        <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+        <value name="VALUE">
+          <block type="math_number" id="5K5;Dpnv@eaa[i^(WLZ|">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="_40TvH=xL{wOG8?g$l!O">
+            <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+            <value name="VALUE">
+              <block type="math_number" id="Ju{kM.%ZCV{a{w8Ep#Fv">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </xml>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceReply" style="display: none">
+      <variables>
+        <variable id="KUzaWPQr:!dS/MGw,8mO">a</variable>
+        <variable id="A%2;oKYL9GtE7PF|m8G)">b</variable>
+        <variable id="Qb4TfOx|4]bJ^Ow^4,T#">c</variable>
+        <variable id="ENcZJ/OdBxGisLZy,=j]">d</variable>
+      </variables>
+      <block type="variables_set" id="PyAkrC/{gKP?9NZvzpIM" x="16" y="54">
+        <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+        <value name="VALUE">
+          <block type="math_number" id="5K5;Dpnv@eaa[i^(WLZ|">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="_40TvH=xL{wOG8?g$l!O">
+            <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+            <value name="VALUE">
+              <block type="math_number" id="Ju{kM.%ZCV{a{w8Ep#Fv">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="Ci]68[A-wVu=s,)ZmX1V">
+                <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                <value name="VALUE">
+                  <block type="math_number" id="R-g}86WnFatTLM3PY{TP">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="?+jO)w=xX/zO*I]A[{+G">
+                    <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="x{2+#A{;V`(}$pT-5{BW">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="aDB?rxg2W{j(yu#RaqGX">
+                        <mutation else="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="gw%Na(38%Z#BV^sd4sMo">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="]!E1*q6eEyY`:3u!Fc|D">
+                                <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="T{08!wo!PTx8N;z3x$cK">
+                                <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="r3nE6YNu^V#cfLO1Tr+F">
+                            <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="Y^8pXRj}r1@Uq7sTi=-6">
+                                <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="e`SD[7u@j*!}?EM#rwFK">
+                                <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                                <value name="VALUE">
+                                  <block type="variables_get" id="gLV8:#R@-9@OVv[vMT__">
+                                    <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <statement name="ELSE">
+                          <block type="variables_set" id="1SSdzRXfu,+YXm2k:B]$">
+                            <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="^C50@F,yB+-/3jTcAxZw">
+                                <field name="VAR" id="A%2;oKYL9GtE7PF|m8G)">b</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="1.|ptBt,F0Y}2#j$!)Dm">
+                                <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                                <value name="VALUE">
+                                  <block type="variables_get" id="R*$BB*kF]p)CtZV/Medy">
+                                    <field name="VAR" id="KUzaWPQr:!dS/MGw,8mO">a</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_repeat_ext" id=",k-vk{$7}wa8sAd]pR-_">
+                            <value name="TIMES">
+                              <block type="variables_get" id="RgVfmyzFA8MPJ|IJvmzx">
+                                <field name="VAR" id="ENcZJ/OdBxGisLZy,=j]">d</field>
+                              </block>
+                            </value>
+                            <statement name="DO">
+                              <block type="variables_set" id="60~#N5r:0(5c.pI]NiY%">
+                                <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                                <value name="VALUE">
+                                  <block type="math_arithmetic" id="1@,X0!9roHDnYla1~OHB">
+                                    <field name="OP">ADD</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="d~O!QO#Q_,pq:4Z9CDUq">
+                                        <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="variables_get" id="XQoq(c{zDWhKts]no7Fa">
+                                        <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="text_print" id="${Pa[a$[`vR+$^3J;E+O">
+                                <value name="TEXT">
+                                  <block type="variables_get" id="^zy3Hb?muw+V?)nJt5w2">
+                                    <field name="VAR" id="Qb4TfOx|4]bJ^Ow^4,T#">c</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </xml>
+
+  </div>
 
   <script type="text/javascript" src="js/texts.js"></script>
   <script type="text/javascript" src="js/timer.js"></script>
@@ -109,6 +816,7 @@
   <script type="text/javascript" src="js/IBlockly.js"></script>
   <script type="text/javascript" src="js/ISkultp.js"></script>
   <script type="text/javascript" src="js/listener.js"></script>
+  <script type="text/javascript" src="js/webcam.js"></script>
   <script type="text/javascript" src="js/init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/custom.css">
 </body>

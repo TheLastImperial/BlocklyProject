@@ -4,6 +4,9 @@ var Game = {
   try: function() {
     this.currentExerc.tries += 1;
   },
+  lessTry: function(){
+    this.currentExerc.tries -= 1;
+  },
   save: function() {
     var idS = this.currentExerc.id;
     if(idS == Exercises.length - 1){

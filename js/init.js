@@ -8,5 +8,5 @@ window.addEventListener('load', function(){
   var height = $(window).height() - $("#divHeader").height();
   $('#divContent').height(height);
 
-  ILoadXML.loadALLXMLs(a);
+  a();
 });
