@@ -13,7 +13,7 @@ var Exercises = [
       "Valida que tu texto es exactamente igual a \"Hola mundo\""
     ],
     preview: [
-      "Lo primero que vamos a aprender es el clasico \"Hola Mundo\"",
+      "Lo primero que vamos a aprender es el clásico \"Hola Mundo\"",
       "Para esto utilizaremos el comando \"imprimir\" en blockly y agregaremos el texto \"Hola Mundo\""
     ],
     blocks: ["text_print"],
@@ -24,18 +24,18 @@ var Exercises = [
     startBlocksFile: null,
     toolboxId: "toolboxIf",
     startBlocksId: null,
-    question: "Escribe una condicion verdadera que imprima \"Hola mundo IF\". Usando la condicion \"if\" en Blockly",
+    question: "Escribe una condición verdadera que imprima \"Hola mundo IF\". Usando la condición \"if\" en Blockly",
     reply: [
       "Hola mundo IF"
     ],
     helps: [
-      "No olvides utilizar la condicion \"if\"",
+      "No olvides utilizar la condición \"if\"",
       "Asegurate de escribir exactamente igual texto \"Hola mundo IF\""
     ],
     preview: [
-      "Ahora vamos a hablar sobre la condicion \"if\"",
-      "La condicion \"if\" nos sirve para ejecutar una parte de codigo siempre y cuando se cumpla cierta condicion que nosotros coloquemos",
-      "En Python la condicion booleana \"True\" representa verdadero y \"False\" representa falso"
+      "Ahora vamos a hablar sobre la condición \"if\"",
+      "La condición \"if\" nos sirve para ejecutar una parte de código siempre y cuando se cumpla cierta condición que nosotros coloquemos",
+      "En Python la condición booleana \"True\" representa verdadero y \"False\" representa falso"
     ],
     blocks: ["controls_if"],
     level: "easy"
@@ -50,12 +50,12 @@ var Exercises = [
       "Hola", "Hola", "Hola", "Hola", "Hola"
     ],
     helps: [
-      "No olvides utilizar la condicion \"for\"",
+      "No olvides utilizar la condición \"for\"",
       "Asegurate de escribir exactamente igual texto del 1 al 5"
     ],
     preview: [
-      "Ahora vamos a hablar sobre los ciclos en especifico el ciclo \"for\"",
-      "El ciclo for nos sirve para ejecutar una instruccion cierta cantidad de veces establecida."
+      "Ahora vamos a hablar sobre los ciclos en específico el ciclo \"for\"",
+      "El ciclo for nos sirve para ejecutar una instrucción cierta cantidad de veces establecida."
     ],
     blocks: ["controls_repeat_ext"],
     level: "easy"
@@ -70,14 +70,14 @@ var Exercises = [
       "Valor inicial", "Valor final"
     ],
     helps: [
-      "Asegurate de que los textos sean identicos a los solicitados.",
+      "Asegurate de que los textos sean idénticos a los solicitados.",
       "Asegurate de crear una variable para este ejercicio.",
       "Asegurate de cambiar el valor de la misma variable que inicializaste."
     ],
     preview: [
       "Vamos a ver un poco sobre variables",
       "En Python una variable es aquella que utilizamos para guardar valores los cuales utilizamos para realizar ciertas tareas.",
-      "Estas variables pueden tomar distintos valores en tiempo de ejecucion."
+      "Estas variables pueden tomar distintos valores en tiempo de ejecución."
     ],
     blocks: ["text_print", "variables_set", "variables_get"],
     level: "medium"
@@ -92,14 +92,14 @@ var Exercises = [
       "2", "4", "6", "8", "10"
     ],
     helps: [
-      "No olvides utilizar la condicion \"for\"",
-      "No olvides utilizar la condicion \"if\"",
+      "No olvides utilizar la condición \"for\"",
+      "No olvides utilizar la condición \"if\"",
       "Asegurate de solo imprimir los numeros divisibles entre 2"
     ],
     preview: [
-      "Ahora vamos a convinar las 2 instrucciones que hemos aprendido",
-      "Utilizaremos la intruccion matematica 'modulo' para obtener el reciduo de una division.",
-      "Esto se hace utilizando el simbolo de '%'."
+      "Ahora vamos a combinar las 2 instrucciones que hemos aprendido",
+      "Utilizaremos la intrucción matemática 'modulo' para obtener el residuo de una división.",
+      "Esto se hace utilizando el símbolo de '%'."
     ],
     blocks: ["controls_for", "controls_if", "math_modulo"],
     level: "medium"
@@ -114,12 +114,12 @@ var Exercises = [
       "320"
     ],
     helps: [
-      "No olvides utilizar la condicion \"for\"",
-      "No olvides utilizar la condicion \"if\"",
+      "No olvides utilizar la condición \"for\"",
+      "No olvides utilizar la condición \"if\"",
       "Asegurate de solo imprimir un resultado"
     ],
     preview: [
-      "Ahora vamos a convinar la creacion de variables, asignacion a variables, ciclos y condicion if."
+      "Ahora vamos a combinar la creación de variables, asignación a variables, ciclos y condicion if."
     ],
     blocks: ["controls_repeat_ext", "controls_if", "variables_set", "logic_compare", "text_print"],
     level: "hard"
